@@ -64,6 +64,14 @@ curl http://172.31.31.86:8443/version
 docker run --name jenkins -w /var/jenkins_home -id -v jenkins:/var/jenkins_home --network host -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock --restart unless-stopped jenkins/jenkins:lts
 ```
 
+- Prerequisites: ---> (example use maven:latest)
+```bash
+Docker image must have Java installed.
+Docker image CMD must either be empty or simply sit and wait forever, e.g. /bin/bash.
+The Jenkins remote agent code will be copied into the container and then run using the Java that's installed in the container.
+See docker container jenkins/agent and/or source jenkinsci/docker-agent as an example.
+```
+
 - Jenkins Server Restart
 ```bash
 docker restart jenkins
