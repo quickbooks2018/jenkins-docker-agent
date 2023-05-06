@@ -42,8 +42,7 @@ https://github.com/twuni/jenkins-nodejs-example/blob/master/Jenkinsfile
 - Step1
  vim /lib/systemd/system/docker.service
  
- - Step2
-- You can replace with below line:
+ - Step2 You can replace with below line:
 
 ```bash
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:8443 -H unix:///var/run/docker.sock
