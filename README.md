@@ -65,19 +65,9 @@ curl http://172.31.31.86:8443/version
 docker run --name jenkins -w /var/jenkins_home -id -v jenkins:/var/jenkins_home --network host -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock --restart unless-stopped jenkins/jenkins:lts
 ```
 
-
+- Jenkins Server Restart
+```bash
 docker restart jenkins
+```
 
-###############################################################
-# https://www.youtube.com/watch?v=ymI02j-hqpU&feature=youtu.be
-# https://github.com/darinpope/jenkins-example-docker
-################################################################
-
-###########################
-# Sample Projects/Pipelines
-###########################
-# https://www.jenkins.io/doc/book/pipeline/docker/
-# https://github.com/jenkins-docs/simple-node-js-react-npm-app
-# https://github.com/twuni/jenkins-nodejs-example/blob/master/Jenkinsfile
-
-# Note: Do not use ubuntu22 lts
+- Note: Do not use ubuntu22 lts for docker setup as it has lot bugs regarding docker & docker compose.
