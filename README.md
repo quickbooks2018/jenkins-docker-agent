@@ -117,7 +117,6 @@ systemctl restart docker-socket.service
 
 systemctl enable docker-socket.service
 
-JENkINS
 # END
 ```
 - Note: Do not use ubuntu22 lts for docker setup as it has lot bugs regarding docker & docker compose.
