@@ -77,4 +77,47 @@ See docker container jenkins/agent and/or source jenkinsci/docker-agent as an ex
 docker restart jenkins
 ```
 
+- Docker Socker Permission
+
+```bash
+chmod 666 /var/run/docker.sock
+```
+
+- Docker Socket Permission Script
+
+```bash
+cat <<EOF > ${HOME}/docker-socket.sh
+#!/bin/bash
+chmod 666 /var/run/docker.sock
+#End
+EOF
+
+chmod +x ${HOME}/docker-socket.sh
+
+cat <<EOF > /etc/systemd/system/docker-socket.service
+[Unit]
+Description=Docker Socket Permissions
+After=docker.service
+BindsTo=docker.service
+ReloadPropagatedFrom=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=${HOME}/docker-socket.sh
+ExecReload=${HOME}/docker-socket.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+
+systemctl restart docker-socket.service
+
+systemctl enable docker-socket.service
+
+JENkINS
+# END
+```
 - Note: Do not use ubuntu22 lts for docker setup as it has lot bugs regarding docker & docker compose.
